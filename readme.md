@@ -2,11 +2,11 @@
 
 ![ssh containers](<ssh containers.jpeg>)
 
-To establish the remote login with ssh protocol between multiple containers, openssh can be used. The openssh-server utility is installed on the server/master container and openshh-client utility over the remote machines.
+To establish the remote login with SSH protocol between multiple containers, OpenSSH can be used. The OpenSSH-server utility is installed on the server/master container and the OpenSSH-client utility is over the remote machines.
 
 The easiest connection configurations are as follows:
 
-1. Pull the Ubuntu container images from docker registry.
+1. Pull the Ubuntu container images from the docker registry.
 
 ```
 docker pull ubuntu:latest
@@ -17,16 +17,16 @@ docker pull ubuntu:latest
 docker run -d --name master ubuntu tail -f /dev/null
 ```
 
-tail -f /dev/null is used to keep the container running as ubuntu container will stop after all proceses are exectued.
+tail -f /dev/null is used to keep the container running as the Ubuntu container will stop after all processes are executed.
 
 3. Execute the bash shell 
 ```
 docker exec -it master bash
 ```
 
-4. Update the image & install openssh-server & nano (text editor)
+4. Update the image & install OpenSSH-server & nano (text editor)
 ```
-apt-get install openssh-server nano -y
+apt-get update && apt-get install openssh-server nano -y
 ```
 
 5. Edit the OpenSSH configuration at /etc/ssh/sshd_config
@@ -53,7 +53,7 @@ passwd root
 exit
 ```
 
-10. Grab the ip address of the master container
+10. Grab the IP address of the master container
 ```
 docker inspect master | grep IP 
 ```
